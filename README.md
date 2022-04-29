@@ -37,9 +37,9 @@ export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libGLEW.so
 
 # install the pip dependencies
 pip3 install -U 'mujoco-py<2.2,>=2.1'
+pip install -r requirements.txt
 python render_mujoco.py  # test mujoco
 python render_mamujoco.py  # test mujoco_multi
-pip install -r requirements.txt
 ```
 
 ### 2.1 MAPSA  for MA-mujoco 
@@ -50,11 +50,11 @@ Results
 ### 2.2 Some baseline for MA-mujoco 
 
 Train: 
-- COMIX
-- COVDN
-- IQL
-- MADDPG
-- FacMADDPG
+- COMIX（comix，comix-naf）
+- COVDN（covdn，covdn-naf）
+- IQL（iqn-cem，iql-naf）*cannot run*
+- MADDPG（maddpg）
+- FacMADDPG（facmaddpg）
 
 ``` sh
 python main.py --config=comix --env-config=mujoco_multi with env_args.scenario="HalfCheetah-v2"

@@ -4,9 +4,9 @@ import time
 
 
 def main():
-    env_args = {"scenario": "HalfCheetah-v2",
-                "agent_conf": "2x3",
-                "agent_obsk": 0,
+    env_args = {"scenario": "Reacher-v2",
+                "agent_conf": "2x1",
+                "agent_obsk": 1,
                 "episode_limit": 1000}
     env = MujocoMulti(env_args=env_args)
     env_info = env.get_env_info()

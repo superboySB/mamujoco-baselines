@@ -14,7 +14,8 @@ import yaml
 
 from run import run
 
-SETTINGS['CAPTURE_MODE'] = "fd" # set to "no" if you want to see stdout/stderr in console
+os.environ["CUDA_VISIBLE_DEVIDES"] = "3"
+SETTINGS['CAPTURE_MODE'] = "fd"  # set to "no" if you want to see stdout/stderr in console
 SETTINGS['CONFIG']['READ_ONLY_CONFIG'] = False
 logger = get_logger()
 
@@ -42,7 +43,7 @@ def setup_mongodb(db_url, db_name):
             client = pymongo.MongoClient(db_url, ssl=True, serverSelectionTimeoutMS=maxSevSelDelay)
             client.server_info()
             # If this hasn't raised an exception, we can add the observer
-            ex.observers.append(MongoObserver.create(url=db_url, db_name=db_name, ssl=True)) # db_name=db_name,
+            ex.observers.append(MongoObserver.create(url=db_url, db_name=db_name, ssl=True))  # db_name=db_name,
             logger.info("Added MongoDB observer on {}.".format(db_url))
             mongodb_fail = False
             break
@@ -70,6 +71,7 @@ def my_main(_run, _config, _log, env_args):
     # force exit
     os._exit(0)
 
+
 def _get_config(params, arg_name, subfolder):
     config_name = None
     for _i, _v in enumerate(params):
@@ -79,12 +81,14 @@ def _get_config(params, arg_name, subfolder):
             break
 
     if config_name is not None:
-        with open(os.path.join(os.path.dirname(__file__), "config", subfolder, "{}.yaml".format(config_name)), "r") as f:
+        with open(os.path.join(os.path.dirname(__file__), "config", subfolder, "{}.yaml".format(config_name)),
+                  "r") as f:
             try:
-                config_dict = yaml.load(f,Loader=yaml.Loader)
+                config_dict = yaml.load(f, Loader=yaml.Loader)
             except yaml.YAMLError as exc:
                 assert False, "{}.yaml error: {}".format(config_name, exc)
         return config_dict
+
 
 def recursive_dict_update(d, u):
     for k, v in u.items():
@@ -94,10 +98,12 @@ def recursive_dict_update(d, u):
             d[k] = v
     return d
 
+
 if __name__ == '__main__':
     import os
 
     from copy import deepcopy
+
     params = deepcopy(sys.argv)
 
     # Get the defaults from default.yaml
@@ -122,7 +128,7 @@ if __name__ == '__main__':
 
     for _i, _v in enumerate(params):
         if "no-mongo" in _v:
-        # if "--no-mongo" == _v:
+            # if "--no-mongo" == _v:
             del params[_i]
             no_mongodb = True
             break

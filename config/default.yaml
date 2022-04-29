@@ -13,15 +13,15 @@ log_interval: 2000 # Log summary of stats after every {} timesteps
 runner_log_interval: 2000 # Log runner stats (not test stats) every {} timesteps
 learner_log_interval: 2000 # Log training stats every {} timesteps
 t_max: 10000 # Stop running after this many timesteps
-use_cuda: False # Use gpu by default unless it isn't available
+use_cuda: True # Use gpu by default unless it isn't available
 use_buffer_compression: False
 buffer_device: ~
 buffer_algo: ~
 buffer_chunk_size: ~
 
 # --- Logging options ---
-use_tensorboard: False # Log results to tensorboard
-save_model: False # Save the models to disk
+use_tensorboard: True # Log results to tensorboard
+save_model: True # Save the models to disk
 save_model_interval: 100000 # Save models after this many timesteps
 checkpoint_path: "" # Load a checkpoint from this path
 evaluate: False # Evaluate model for test_nepisode episodes and quit (no training)
