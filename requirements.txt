@@ -1,0 +1,5 @@
+scipy
+pyyaml
+matplotlib
+sacred
+pymongo
