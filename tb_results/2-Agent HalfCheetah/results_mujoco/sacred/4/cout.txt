@@ -1,0 +1,725 @@
+[INFO 11:42:04] pymarl Running command 'my_main'
+[INFO 11:42:04] pymarl Started run with ID "4"
+[DEBUG 11:42:04] pymarl Starting Heartbeat
+[DEBUG 11:42:04] my_main Started
+[INFO 11:42:04] my_main Experiment Parameters:
+[INFO 11:42:04] my_main 
+
+{   'act_noise': 0.1,
+    'action_range': None,
+    'action_selector': None,
+    'agent': 'mlp',
+    'agent_output_type': None,
+    'agent_return_logits': False,
+    'batch_size': 100,
+    'batch_size_run': 1,
+    'buffer_algo': None,
+    'buffer_chunk_size': None,
+    'buffer_cpu_only': True,
+    'buffer_device': None,
+    'buffer_mode': 'transitions',
+    'buffer_size': 1000000,
+    'buffer_warmup': 1000,
+    'checkpoint_path': '',
+    'continuous_actions': False,
+    'critic_lr': 0.001,
+    'debug': False,
+    'discretize_actions': False,
+    'double_q': False,
+    'env': 'mujoco_multi',
+    'env_args': {   'agent_conf': '2x3',
+                    'env_version': 2,
+                    'episode_limit': 1000,
+                    'scenario': 'HalfCheetah-v2',
+                    'seed': 915911226},
+    'epsilon_anneal_time': None,
+    'epsilon_decay_mode': None,
+    'epsilon_finish': None,
+    'epsilon_start': None,
+    'evaluate': False,
+    'exploration_mode': 'gaussian',
+    'final_ou_noise_scale': 0.0,
+    'gamma': 0.99,
+    'gated': False,
+    'grad_norm_clip': 10,
+    'hidden_dim': 400,
+    'hyper_initialization_nonzeros': 0,
+    'hypernet_embed': 64,
+    'hypernet_layers': 2,
+    'label': 'default_label',
+    'learn_interval': 1,
+    'learner': 'facmaddpg_learner',
+    'learner_log_interval': 2000,
+    'load_step': 0,
+    'local_results_path': 'results',
+    'log_interval': 2000,
+    'lr': 0.001,
+    'mac': 'cqmix_mac',
+    'mixer': 'qmix',
+    'mixing_embed_dim': 64,
+    'n_runners': None,
+    'n_train': 1,
+    'naf_hidden_dim': None,
+    'name': 'facmaddpg',
+    'obs_agent_id': False,
+    'obs_last_action': False,
+    'optim_alpha': 0.99,
+    'optim_eps': 1e-05,
+    'optimizer': 'adam',
+    'optimizer_epsilon': 0.01,
+    'ou_noise_scale': 0.3,
+    'ou_sigma': 0.2,
+    'ou_stop_episode': 100,
+    'ou_theta': 0.15,
+    'plot_loss_network': False,
+    'recurrent_critic': False,
+    'repeat_id': 1,
+    'rnn_hidden_dim': 400,
+    'run_mode': None,
+    'runner': 'parallel',
+    'runner_log_interval': 2000,
+    'runner_scope': 'transition',
+    'save_model': False,
+    'save_model_interval': 100000,
+    'save_replay': False,
+    'seed': 915911226,
+    'skip_connections': False,
+    'start_steps': 10000,
+    't_max': 2000000,
+    'target_update_interval': None,
+    'target_update_mode': 'soft',
+    'target_update_tau': 0.001,
+    'test_greedy': None,
+    'test_interval': 4000,
+    'test_nepisode': 10,
+    'testing_on': True,
+    'use_buffer_compression': False,
+    'use_cuda': True,
+    'use_tensorboard': True,
+    'verbose': False,
+    'weight_decay': True,
+    'weight_decay_factor': 0.0001}
+
+/home/liuchi/anaconda3/envs/mujoco/lib/python3.8/site-packages/gym/envs/registration.py:14: PkgResourcesDeprecationWarning: Parameters to load are deprecated.  Call .resolve and .require separately.
+  result = entry_point.load(False)
+[33mWARN: gym.spaces.Box autodetected dtype as <class 'numpy.float32'>. Please provide explicit dtype.[0m
+[33mWARN: gym.spaces.Box autodetected dtype as <class 'numpy.float32'>. Please provide explicit dtype.[0m
+[33mWARN: gym.spaces.Box autodetected dtype as <class 'numpy.float32'>. Please provide explicit dtype.[0m
+[33mWARN: gym.spaces.Box autodetected dtype as <class 'numpy.float32'>. Please provide explicit dtype.[0m
+[INFO 11:42:12] my_main Beginning training for 2000000 timesteps
+/home/liuchi/dzp_is_sb/mamujoco-baselines/components/episode_buffer.py:108: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at  /opt/conda/conda-bld/pytorch_1646755903507/work/torch/csrc/utils/tensor_new.cpp:210.)
+  v = th.tensor(v, dtype=dtype, device=self.device)
+/home/liuchi/anaconda3/envs/mujoco/lib/python3.8/site-packages/torch/nn/functional.py:1933: UserWarning: nn.functional.tanh is deprecated. Use torch.tanh instead.
+  warnings.warn("nn.functional.tanh is deprecated. Use torch.tanh instead.")
+/home/liuchi/dzp_is_sb/mamujoco-baselines/components/episode_buffer.py:108: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  v = th.tensor(v, dtype=dtype, device=self.device)
+[INFO 11:42:27] my_main t_env: 1000 / 2000000
+[INFO 11:42:27] my_main Estimated time left: 1 hours, 45 minutes, 53 seconds. Time passed: 15 seconds
+[INFO 11:47:39] my_main Recent Stats | t_env:       2000 | Episode:        2
+action_means_mean:        -0.0075	action_norms_mean:         1.3941	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             -229.7576	return_std:                0.0000	reward_ctrl_mean:         -0.1423	reward_run_mean:          -0.6961
+test_action_means_mean:    0.0108	test_action_norms_mean:    0.1369	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:         -2.2522	test_return_std:           0.6241	test_reward_ctrl_mean:    -0.0018	test_reward_run_mean:      0.0000
+
+[INFO 11:53:36] my_main Recent Stats | t_env:       4000 | Episode:        4
+action_means_mean:        -0.0094	action_norms_mean:         1.3955	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             -243.8804	return_std:               35.9661	reward_ctrl_mean:         -0.1352	reward_run_mean:          -0.2522
+test_action_means_mean:    0.0108	test_action_norms_mean:    0.1369	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:         -2.2522	test_return_std:           0.6241	test_reward_ctrl_mean:    -0.0018	test_reward_run_mean:      0.0000
+
+[INFO 11:56:39] my_main t_env: 5000 / 2000000
+[INFO 11:56:39] my_main Estimated time left: 4 days, 22 hours, 1 minutes, 58 seconds. Time passed: 14 minutes, 27 seconds
+[INFO 12:03:09] my_main Recent Stats | t_env:       6000 | Episode:        6
+action_means_mean:        -0.0054	action_norms_mean:         1.3956	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             -266.9069	return_std:               27.6170	reward_ctrl_mean:         -0.1564	reward_run_mean:          -0.2191
+test_action_means_mean:   -0.0989	test_action_norms_mean:    1.0207	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        -182.8716	test_return_std:           0.7053	test_reward_ctrl_mean:    -0.1813	test_reward_run_mean:     -0.0000
+
+[INFO 12:08:46] my_main Recent Stats | t_env:       8000 | Episode:        8
+action_means_mean:        -0.0042	action_norms_mean:         1.3925	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             -280.8389	return_std:               23.0991	reward_ctrl_mean:         -0.1884	reward_run_mean:          -0.4162
+test_action_means_mean:   -0.0989	test_action_norms_mean:    1.0207	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        -182.8716	test_return_std:           0.7053	test_reward_ctrl_mean:    -0.1813	test_reward_run_mean:     -0.0000
+
+[INFO 12:11:38] my_main t_env: 9000 / 2000000
+[INFO 12:11:38] my_main Estimated time left: 5 days, 4 hours, 14 minutes, 5 seconds. Time passed: 29 minutes, 26 seconds
+[INFO 12:18:34] my_main Recent Stats | t_env:      10000 | Episode:       10
+action_means_mean:        -0.0037	action_norms_mean:         1.3920	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             -283.3824	return_std:               26.6851	reward_ctrl_mean:         -0.1950	reward_run_mean:          -0.4989
+test_action_means_mean:    0.2211	test_action_norms_mean:    1.3837	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        -268.8487	test_return_std:           0.9222	test_reward_ctrl_mean:    -0.2683	test_reward_run_mean:      0.0000
+
+[INFO 12:24:13] my_main Recent Stats | t_env:      12000 | Episode:       12
+action_means_mean:         0.0841	action_norms_mean:         1.4709	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             -306.6910	return_std:               53.4281	reward_ctrl_mean:         -0.2493	reward_run_mean:          -0.2723
+test_action_means_mean:    0.2211	test_action_norms_mean:    1.3837	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        -268.8487	test_return_std:           0.9222	test_reward_ctrl_mean:    -0.2683	test_reward_run_mean:      0.0000
+
+[INFO 12:27:08] my_main t_env: 13000 / 2000000
+[INFO 12:27:08] my_main Estimated time left: 5 days, 8 hours, 18 minutes, 49 seconds. Time passed: 44 minutes, 56 seconds
+[INFO 12:33:49] my_main Recent Stats | t_env:      14000 | Episode:       14
+action_means_mean:         0.1319	action_norms_mean:         1.6315	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             -351.7699	return_std:               50.6368	reward_ctrl_mean:         -0.3317	reward_run_mean:          -0.3472
+test_action_means_mean:   -0.0135	test_action_norms_mean:    1.6162	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        -326.5495	test_return_std:          18.5627	test_reward_ctrl_mean:    -0.3416	test_reward_run_mean:      0.0036
+
+[INFO 12:39:40] my_main Recent Stats | t_env:      16000 | Episode:       16
+action_means_mean:        -0.0169	action_norms_mean:         1.7895	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             -375.1491	return_std:               55.9843	reward_ctrl_mean:         -0.4017	reward_run_mean:          -0.3500
+test_action_means_mean:   -0.0135	test_action_norms_mean:    1.6162	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        -326.5495	test_return_std:          18.5627	test_reward_ctrl_mean:    -0.3416	test_reward_run_mean:      0.0036
+
+[INFO 12:42:20] my_main t_env: 17000 / 2000000
+[INFO 12:42:20] my_main Estimated time left: 5 days, 5 hours, 37 minutes, 13 seconds. Time passed: 1 hours, 8 seconds
+[INFO 12:48:58] my_main Recent Stats | t_env:      18000 | Episode:       18
+action_means_mean:        -0.1033	action_norms_mean:         1.9393	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             -377.7958	return_std:               83.2982	reward_ctrl_mean:         -0.4411	reward_run_mean:          -0.1283
+test_action_means_mean:   -0.0468	test_action_norms_mean:    1.7175	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        -339.2204	test_return_std:          30.4557	test_reward_ctrl_mean:    -0.3711	test_reward_run_mean:     -0.0123
+
+[INFO 12:54:38] my_main Recent Stats | t_env:      20000 | Episode:       20
+action_means_mean:        -0.1454	action_norms_mean:         2.0587	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             -397.0370	return_std:               90.5429	reward_ctrl_mean:         -0.4477	reward_run_mean:           0.2000
+test_action_means_mean:   -0.0468	test_action_norms_mean:    1.7175	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        -339.2204	test_return_std:          30.4557	test_reward_ctrl_mean:    -0.3711	test_reward_run_mean:     -0.0123
+
+[INFO 12:57:31] my_main t_env: 21000 / 2000000
+[INFO 12:57:31] my_main Estimated time left: 5 days, 5 hours, 11 minutes, 47 seconds. Time passed: 1 hours, 15 minutes, 19 seconds
+[INFO 13:04:14] my_main Recent Stats | t_env:      22000 | Episode:       22
+action_means_mean:        -0.3065	action_norms_mean:         2.0897	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             -383.8070	return_std:               95.8602	reward_ctrl_mean:         -0.4194	reward_run_mean:           0.0733
+test_action_means_mean:   -0.1304	test_action_norms_mean:    2.0823	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        -423.5526	test_return_std:          36.1081	test_reward_ctrl_mean:    -0.4559	test_reward_run_mean:      0.0054
+
+[INFO 13:10:02] my_main Recent Stats | t_env:      24000 | Episode:       24
+action_means_mean:        -0.3964	action_norms_mean:         1.9795	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             -357.6238	return_std:               99.1148	reward_ctrl_mean:         -0.3756	reward_run_mean:           0.0531
+test_action_means_mean:   -0.1304	test_action_norms_mean:    2.0823	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        -423.5526	test_return_std:          36.1081	test_reward_ctrl_mean:    -0.4559	test_reward_run_mean:      0.0054
+
+[INFO 13:13:03] my_main t_env: 25000 / 2000000
+[INFO 13:13:03] my_main Estimated time left: 5 days, 7 hours, 52 minutes, 29 seconds. Time passed: 1 hours, 30 minutes, 51 seconds
+[INFO 13:19:37] my_main Recent Stats | t_env:      26000 | Episode:       26
+action_means_mean:        -0.2641	action_norms_mean:         1.8043	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             -309.6316	return_std:               94.6556	reward_ctrl_mean:         -0.3030	reward_run_mean:           0.0438
+test_action_means_mean:   -0.0708	test_action_norms_mean:    1.9002	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        -377.7494	test_return_std:          46.3270	test_reward_ctrl_mean:    -0.4042	test_reward_run_mean:     -0.0094
+
+[INFO 13:25:32] my_main Recent Stats | t_env:      28000 | Episode:       28
+action_means_mean:        -0.1358	action_norms_mean:         1.6149	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             -276.9557	return_std:               73.6110	reward_ctrl_mean:         -0.2215	reward_run_mean:           0.0264
+test_action_means_mean:   -0.0708	test_action_norms_mean:    1.9002	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        -377.7494	test_return_std:          46.3270	test_reward_ctrl_mean:    -0.4042	test_reward_run_mean:     -0.0094
+
+[INFO 13:28:34] my_main t_env: 29000 / 2000000
+[INFO 13:28:34] my_main Estimated time left: 5 days, 7 hours, 23 minutes, 5 seconds. Time passed: 1 hours, 46 minutes, 22 seconds
+[INFO 13:35:01] my_main Recent Stats | t_env:      30000 | Episode:       30
+action_means_mean:        -0.0607	action_norms_mean:         1.4093	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             -224.3374	return_std:               59.0994	reward_ctrl_mean:         -0.2326	reward_run_mean:          -0.1164
+test_action_means_mean:   -0.2022	test_action_norms_mean:    1.7100	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        -316.9918	test_return_std:          59.9546	test_reward_ctrl_mean:    -0.3458	test_reward_run_mean:     -0.0079
+
+[INFO 13:40:47] my_main Recent Stats | t_env:      32000 | Episode:       32
+action_means_mean:         0.0499	action_norms_mean:         1.2271	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             -189.6801	return_std:               28.7276	reward_ctrl_mean:         -0.1905	reward_run_mean:          -0.0720
+test_action_means_mean:   -0.2022	test_action_norms_mean:    1.7100	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        -316.9918	test_return_std:          59.9546	test_reward_ctrl_mean:    -0.3458	test_reward_run_mean:     -0.0079
+
+[INFO 13:43:48] my_main t_env: 33000 / 2000000
+[INFO 13:43:48] my_main Estimated time left: 5 days, 4 hours, 47 minutes, 5 seconds. Time passed: 2 hours, 1 minutes, 36 seconds
+[INFO 13:50:17] my_main Recent Stats | t_env:      34000 | Episode:       34
+action_means_mean:         0.1217	action_norms_mean:         1.0973	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             -136.5590	return_std:               14.8433	reward_ctrl_mean:         -0.1359	reward_run_mean:          -0.0041
+test_action_means_mean:   -0.0365	test_action_norms_mean:    1.4105	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        -222.7908	test_return_std:          50.2563	test_reward_ctrl_mean:    -0.2451	test_reward_run_mean:     -0.0115
+
+[INFO 13:56:06] my_main Recent Stats | t_env:      36000 | Episode:       36
+action_means_mean:         0.1651	action_norms_mean:         1.0042	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             -117.2833	return_std:               21.2582	reward_ctrl_mean:         -0.1076	reward_run_mean:           0.0336
+test_action_means_mean:   -0.0365	test_action_norms_mean:    1.4105	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        -222.7908	test_return_std:          50.2563	test_reward_ctrl_mean:    -0.2451	test_reward_run_mean:     -0.0115
+
+[INFO 13:59:01] my_main t_env: 37000 / 2000000
+[INFO 13:59:01] my_main Estimated time left: 5 days, 4 hours, 32 minutes, 31 seconds. Time passed: 2 hours, 16 minutes, 49 seconds
+[INFO 14:05:35] my_main Recent Stats | t_env:      38000 | Episode:       38
+action_means_mean:         0.1356	action_norms_mean:         0.9258	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             -90.3065	return_std:               14.3934	reward_ctrl_mean:         -0.1001	reward_run_mean:           0.0031
+test_action_means_mean:    0.0267	test_action_norms_mean:    1.1413	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        -155.4471	test_return_std:          49.5592	test_reward_ctrl_mean:    -0.1539	test_reward_run_mean:      0.0037
+
+[INFO 14:11:27] my_main Recent Stats | t_env:      40000 | Episode:       40
+action_means_mean:         0.0835	action_norms_mean:         0.9241	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             -70.1214	return_std:               16.7710	reward_ctrl_mean:         -0.0497	reward_run_mean:          -0.0097
+test_action_means_mean:    0.0267	test_action_norms_mean:    1.1413	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        -155.4471	test_return_std:          49.5592	test_reward_ctrl_mean:    -0.1539	test_reward_run_mean:      0.0037
+
+[INFO 14:14:18] my_main t_env: 41000 / 2000000
+[INFO 14:14:18] my_main Estimated time left: 5 days, 4 hours, 44 minutes, 43 seconds. Time passed: 2 hours, 32 minutes, 6 seconds
+[INFO 14:21:01] my_main Recent Stats | t_env:      42000 | Episode:       42
+action_means_mean:         0.0108	action_norms_mean:         0.9827	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             -44.0381	return_std:               21.2215	reward_ctrl_mean:         -0.0923	reward_run_mean:           0.1326
+test_action_means_mean:    0.0914	test_action_norms_mean:    1.0118	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        -52.2939	test_return_std:          59.6454	test_reward_ctrl_mean:    -0.1034	test_reward_run_mean:     -0.0228
+
+[INFO 14:27:01] my_main Recent Stats | t_env:      44000 | Episode:       44
+action_means_mean:        -0.0502	action_norms_mean:         1.0820	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:               8.3647	return_std:               43.6171	reward_ctrl_mean:         -0.1225	reward_run_mean:           0.2931
+test_action_means_mean:    0.0914	test_action_norms_mean:    1.0118	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        -52.2939	test_return_std:          59.6454	test_reward_ctrl_mean:    -0.1034	test_reward_run_mean:     -0.0228
+
+[INFO 14:29:49] my_main t_env: 45000 / 2000000
+[INFO 14:29:49] my_main Estimated time left: 5 days, 6 hours, 24 minutes, 1 seconds. Time passed: 2 hours, 47 minutes, 37 seconds
+[INFO 14:36:30] my_main Recent Stats | t_env:      46000 | Episode:       46
+action_means_mean:        -0.0854	action_norms_mean:         1.2069	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:              47.5137	return_std:               57.8171	reward_ctrl_mean:         -0.1582	reward_run_mean:           0.2160
+test_action_means_mean:    0.0727	test_action_norms_mean:    1.0704	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:         -9.6655	test_return_std:          63.0161	test_reward_ctrl_mean:    -0.1085	test_reward_run_mean:      0.0773
+
+[INFO 14:42:21] my_main Recent Stats | t_env:      48000 | Episode:       48
+action_means_mean:        -0.1125	action_norms_mean:         1.3766	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:              92.0749	return_std:               72.3286	reward_ctrl_mean:         -0.1834	reward_run_mean:           0.1731
+test_action_means_mean:    0.0727	test_action_norms_mean:    1.0704	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:         -9.6655	test_return_std:          63.0161	test_reward_ctrl_mean:    -0.1085	test_reward_run_mean:      0.0773
+
+[INFO 14:45:24] my_main t_env: 49000 / 2000000
+[INFO 14:45:24] my_main Estimated time left: 5 days, 6 hours, 42 minutes, 0 seconds. Time passed: 3 hours, 3 minutes, 12 seconds
+[INFO 14:51:53] my_main Recent Stats | t_env:      50000 | Episode:       50
+action_means_mean:        -0.0925	action_norms_mean:         1.5229	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             148.5696	return_std:              123.8324	reward_ctrl_mean:         -0.2379	reward_run_mean:           0.3721
+test_action_means_mean:    0.0458	test_action_norms_mean:    1.1747	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        135.3974	test_return_std:          85.7931	test_reward_ctrl_mean:    -0.1381	test_reward_run_mean:      0.3214
+
+[INFO 14:57:48] my_main Recent Stats | t_env:      52000 | Episode:       52
+action_means_mean:        -0.0386	action_norms_mean:         1.6385	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             328.8387	return_std:              168.7293	reward_ctrl_mean:         -0.2880	reward_run_mean:           0.6983
+test_action_means_mean:    0.0458	test_action_norms_mean:    1.1747	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        135.3974	test_return_std:          85.7931	test_reward_ctrl_mean:    -0.1381	test_reward_run_mean:      0.3214
+
+[INFO 15:00:49] my_main t_env: 53000 / 2000000
+[INFO 15:00:49] my_main Estimated time left: 5 days, 4 hours, 59 minutes, 54 seconds. Time passed: 3 hours, 18 minutes, 37 seconds
+[INFO 15:07:17] my_main Recent Stats | t_env:      54000 | Episode:       54
+action_means_mean:         0.0270	action_norms_mean:         1.7493	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             529.8026	return_std:              217.4877	reward_ctrl_mean:         -0.3477	reward_run_mean:           0.8493
+test_action_means_mean:    0.0923	test_action_norms_mean:    1.4730	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        533.5439	test_return_std:         115.5892	test_reward_ctrl_mean:    -0.2429	test_reward_run_mean:      0.8129
+
+[INFO 15:13:19] my_main Recent Stats | t_env:      56000 | Episode:       56
+action_means_mean:         0.0908	action_norms_mean:         1.8976	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             833.6611	return_std:              220.9508	reward_ctrl_mean:         -0.4061	reward_run_mean:           1.4737
+test_action_means_mean:    0.0923	test_action_norms_mean:    1.4730	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        533.5439	test_return_std:         115.5892	test_reward_ctrl_mean:    -0.2429	test_reward_run_mean:      0.8129
+
+[INFO 15:16:15] my_main t_env: 57000 / 2000000
+[INFO 15:16:15] my_main Estimated time left: 5 days, 5 hours, 19 seconds. Time passed: 3 hours, 34 minutes, 3 seconds
+[INFO 15:23:01] my_main Recent Stats | t_env:      58000 | Episode:       58
+action_means_mean:         0.1666	action_norms_mean:         2.0259	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             1135.5735	return_std:              234.9611	reward_ctrl_mean:         -0.4837	reward_run_mean:           1.8800
+test_action_means_mean:    0.1270	test_action_norms_mean:    1.7965	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        901.3649	test_return_std:         120.0583	test_reward_ctrl_mean:    -0.3518	test_reward_run_mean:      1.2024
+
+[INFO 15:28:56] my_main Recent Stats | t_env:      60000 | Episode:       60
+action_means_mean:         0.2285	action_norms_mean:         2.1494	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             1421.4909	return_std:              187.1406	reward_ctrl_mean:         -0.5200	reward_run_mean:           2.4164
+test_action_means_mean:    0.1270	test_action_norms_mean:    1.7965	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        901.3649	test_return_std:         120.0583	test_reward_ctrl_mean:    -0.3518	test_reward_run_mean:      1.2024
+
+[INFO 15:32:22] my_main t_env: 61000 / 2000000
+[INFO 15:32:22] my_main Estimated time left: 5 days, 10 hours, 7 minutes, 38 seconds. Time passed: 3 hours, 50 minutes, 10 seconds
+[INFO 15:38:26] my_main Recent Stats | t_env:      62000 | Episode:       62
+action_means_mean:         0.2706	action_norms_mean:         2.2260	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             1566.1051	return_std:              136.4128	reward_ctrl_mean:         -0.4895	reward_run_mean:           2.4714
+test_action_means_mean:    0.1745	test_action_norms_mean:    1.9847	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        1199.6331	test_return_std:         143.0421	test_reward_ctrl_mean:    -0.4210	test_reward_run_mean:      1.5634
+
+[INFO 15:43:16] my_main Recent Stats | t_env:      64000 | Episode:       64
+action_means_mean:         0.2989	action_norms_mean:         2.2731	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             1632.6488	return_std:               90.1310	reward_ctrl_mean:         -0.4929	reward_run_mean:           2.5512
+test_action_means_mean:    0.1745	test_action_norms_mean:    1.9847	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        1199.6331	test_return_std:         143.0421	test_reward_ctrl_mean:    -0.4210	test_reward_run_mean:      1.5634
+
+[INFO 15:45:47] my_main t_env: 65000 / 2000000
+[INFO 15:45:47] my_main Estimated time left: 4 days, 12 hours, 16 minutes, 10 seconds. Time passed: 4 hours, 3 minutes, 35 seconds
+[INFO 15:50:57] my_main Recent Stats | t_env:      66000 | Episode:       66
+action_means_mean:         0.2892	action_norms_mean:         2.2692	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             1592.8601	return_std:               72.7292	reward_ctrl_mean:         -0.4792	reward_run_mean:           2.4011
+test_action_means_mean:    0.2176	test_action_norms_mean:    2.1691	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        1471.2434	test_return_std:         151.7258	test_reward_ctrl_mean:    -0.4989	test_reward_run_mean:      1.7944
+
+[INFO 15:55:57] my_main Recent Stats | t_env:      68000 | Episode:       68
+action_means_mean:         0.2685	action_norms_mean:         2.2390	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             1574.1135	return_std:               43.9298	reward_ctrl_mean:         -0.4836	reward_run_mean:           2.7174
+test_action_means_mean:    0.2176	test_action_norms_mean:    2.1691	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        1471.2434	test_return_std:         151.7258	test_reward_ctrl_mean:    -0.4989	test_reward_run_mean:      1.7944
+
+[INFO 15:58:28] my_main t_env: 69000 / 2000000
+[INFO 15:58:28] my_main Estimated time left: 4 days, 5 hours, 57 minutes, 42 seconds. Time passed: 4 hours, 16 minutes, 16 seconds
+[INFO 16:03:37] my_main Recent Stats | t_env:      70000 | Episode:       70
+action_means_mean:         0.2530	action_norms_mean:         2.2041	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             1536.7483	return_std:               52.4481	reward_ctrl_mean:         -0.4863	reward_run_mean:           2.4357
+test_action_means_mean:    0.2628	test_action_norms_mean:    2.2903	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        1664.4817	test_return_std:         193.9746	test_reward_ctrl_mean:    -0.5463	test_reward_run_mean:      1.9054
+
+[INFO 16:08:26] my_main Recent Stats | t_env:      72000 | Episode:       72
+action_means_mean:         0.2427	action_norms_mean:         2.1797	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             1551.5686	return_std:               52.7381	reward_ctrl_mean:         -0.5198	reward_run_mean:           2.0726
+test_action_means_mean:    0.2628	test_action_norms_mean:    2.2903	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        1664.4817	test_return_std:         193.9746	test_reward_ctrl_mean:    -0.5463	test_reward_run_mean:      1.9054
+
+[INFO 16:11:03] my_main t_env: 73000 / 2000000
+[INFO 16:11:03] my_main Estimated time left: 4 days, 5 hours, 7 minutes, 14 seconds. Time passed: 4 hours, 28 minutes, 51 seconds
+[INFO 16:16:18] my_main Recent Stats | t_env:      74000 | Episode:       74
+action_means_mean:         0.2227	action_norms_mean:         2.1489	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             1618.2129	return_std:               29.1180	reward_ctrl_mean:         -0.5236	reward_run_mean:           1.7560
+test_action_means_mean:    0.2304	test_action_norms_mean:    2.2764	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        1677.0761	test_return_std:         179.7920	test_reward_ctrl_mean:    -0.5380	test_reward_run_mean:      1.9815
+
+[INFO 16:21:24] my_main Recent Stats | t_env:      76000 | Episode:       76
+action_means_mean:         0.2050	action_norms_mean:         2.1324	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             1694.7265	return_std:               29.0361	reward_ctrl_mean:         -0.5044	reward_run_mean:           1.7328
+test_action_means_mean:    0.2304	test_action_norms_mean:    2.2764	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        1677.0761	test_return_std:         179.7920	test_reward_ctrl_mean:    -0.5380	test_reward_run_mean:      1.9815
+
+[INFO 16:23:51] my_main t_env: 77000 / 2000000
+[INFO 16:23:51] my_main Estimated time left: 4 days, 6 hours, 32 minutes, 42 seconds. Time passed: 4 hours, 41 minutes, 39 seconds
+[INFO 16:28:53] my_main Recent Stats | t_env:      78000 | Episode:       78
+action_means_mean:         0.2072	action_norms_mean:         2.1368	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             1796.3903	return_std:               32.1156	reward_ctrl_mean:         -0.4903	reward_run_mean:           1.5841
+test_action_means_mean:    0.2209	test_action_norms_mean:    2.2452	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        1760.2243	test_return_std:         180.8794	test_reward_ctrl_mean:    -0.5142	test_reward_run_mean:      2.1823
+
+[INFO 16:33:36] my_main Recent Stats | t_env:      80000 | Episode:       80
+action_means_mean:         0.1968	action_norms_mean:         2.1410	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             1914.1311	return_std:               34.3079	reward_ctrl_mean:         -0.4890	reward_run_mean:           1.8529
+test_action_means_mean:    0.2209	test_action_norms_mean:    2.2452	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        1760.2243	test_return_std:         180.8794	test_reward_ctrl_mean:    -0.5142	test_reward_run_mean:      2.1823
+
+[INFO 16:36:14] my_main t_env: 81000 / 2000000
+[INFO 16:36:14] my_main Estimated time left: 4 days, 2 hours, 56 minutes, 44 seconds. Time passed: 4 hours, 54 minutes, 2 seconds
+[INFO 16:41:05] my_main Recent Stats | t_env:      82000 | Episode:       82
+action_means_mean:         0.1823	action_norms_mean:         2.1491	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             2012.0913	return_std:               51.7828	reward_ctrl_mean:         -0.4602	reward_run_mean:           2.1095
+test_action_means_mean:    0.2248	test_action_norms_mean:    2.2512	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        1895.7710	test_return_std:         179.1323	test_reward_ctrl_mean:    -0.5206	test_reward_run_mean:      2.2703
+
+[INFO 16:46:10] my_main Recent Stats | t_env:      84000 | Episode:       84
+action_means_mean:         0.1736	action_norms_mean:         2.1619	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             2060.0277	return_std:               82.6942	reward_ctrl_mean:         -0.4528	reward_run_mean:           3.0222
+test_action_means_mean:    0.2248	test_action_norms_mean:    2.2512	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        1895.7710	test_return_std:         179.1323	test_reward_ctrl_mean:    -0.5206	test_reward_run_mean:      2.2703
+
+[INFO 16:48:34] my_main t_env: 85000 / 2000000
+[INFO 16:48:34] my_main Estimated time left: 4 days, 2 hours, 30 minutes, 10 seconds. Time passed: 5 hours, 6 minutes, 22 seconds
+[INFO 16:53:55] my_main Recent Stats | t_env:      86000 | Episode:       86
+action_means_mean:         0.1801	action_norms_mean:         2.1785	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             2175.1344	return_std:              161.1720	reward_ctrl_mean:         -0.4872	reward_run_mean:           3.7161
+test_action_means_mean:    0.2246	test_action_norms_mean:    2.2648	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        2103.2355	test_return_std:         173.5947	test_reward_ctrl_mean:    -0.5144	test_reward_run_mean:      2.4906
+
+[INFO 16:58:41] my_main Recent Stats | t_env:      88000 | Episode:       88
+action_means_mean:         0.1785	action_norms_mean:         2.1905	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             2274.1168	return_std:              199.8446	reward_ctrl_mean:         -0.5035	reward_run_mean:           4.1896
+test_action_means_mean:    0.2246	test_action_norms_mean:    2.2648	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        2103.2355	test_return_std:         173.5947	test_reward_ctrl_mean:    -0.5144	test_reward_run_mean:      2.4906
+
+[INFO 17:01:19] my_main t_env: 89000 / 2000000
+[INFO 17:01:19] my_main Estimated time left: 4 days, 5 hours, 24 minutes, 22 seconds. Time passed: 5 hours, 19 minutes, 7 seconds
+[INFO 17:06:26] my_main Recent Stats | t_env:      90000 | Episode:       90
+action_means_mean:         0.1820	action_norms_mean:         2.2040	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             2367.0585	return_std:              204.0072	reward_ctrl_mean:         -0.4837	reward_run_mean:           4.1132
+test_action_means_mean:    0.2073	test_action_norms_mean:    2.2518	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        2250.2374	test_return_std:         187.1112	test_reward_ctrl_mean:    -0.4973	test_reward_run_mean:      2.5818
+
+[INFO 17:11:19] my_main Recent Stats | t_env:      92000 | Episode:       92
+action_means_mean:         0.1873	action_norms_mean:         2.2026	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             2420.7909	return_std:              203.6286	reward_ctrl_mean:         -0.5031	reward_run_mean:           4.4771
+test_action_means_mean:    0.2073	test_action_norms_mean:    2.2518	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        2250.2374	test_return_std:         187.1112	test_reward_ctrl_mean:    -0.4973	test_reward_run_mean:      2.5818
+
+[INFO 17:13:43] my_main t_env: 93000 / 2000000
+[INFO 17:13:43] my_main Estimated time left: 4 days, 2 hours, 32 minutes, 15 seconds. Time passed: 5 hours, 31 minutes, 31 seconds
+[INFO 17:18:43] my_main Recent Stats | t_env:      94000 | Episode:       94
+action_means_mean:         0.1985	action_norms_mean:         2.2091	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             2511.5393	return_std:              193.0763	reward_ctrl_mean:         -0.5172	reward_run_mean:           4.1901
+test_action_means_mean:    0.2197	test_action_norms_mean:    2.2555	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        2321.6065	test_return_std:         178.6767	test_reward_ctrl_mean:    -0.4844	test_reward_run_mean:      2.7970
+
+[INFO 17:23:43] my_main Recent Stats | t_env:      96000 | Episode:       96
+action_means_mean:         0.2065	action_norms_mean:         2.2139	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             2511.2397	return_std:              123.9044	reward_ctrl_mean:         -0.5247	reward_run_mean:           3.8069
+test_action_means_mean:    0.2197	test_action_norms_mean:    2.2555	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        2321.6065	test_return_std:         178.6767	test_reward_ctrl_mean:    -0.4844	test_reward_run_mean:      2.7970
+
+[INFO 17:26:08] my_main t_env: 97000 / 2000000
+[INFO 17:26:08] my_main Estimated time left: 4 days, 2 hours, 28 minutes, 49 seconds. Time passed: 5 hours, 43 minutes, 56 seconds
+[INFO 17:31:15] my_main Recent Stats | t_env:      98000 | Episode:       98
+action_means_mean:         0.2126	action_norms_mean:         2.2210	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             2513.4884	return_std:               86.2669	reward_ctrl_mean:         -0.5169	reward_run_mean:           3.4601
+test_action_means_mean:    0.2118	test_action_norms_mean:    2.2825	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        2423.2357	test_return_std:         187.1892	test_reward_ctrl_mean:    -0.5114	test_reward_run_mean:      2.9405
+
+[INFO 17:35:55] my_main Recent Stats | t_env:     100000 | Episode:      100
+action_means_mean:         0.2159	action_norms_mean:         2.2231	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             2537.3569	return_std:               67.8198	reward_ctrl_mean:         -0.5104	reward_run_mean:           3.3606
+test_action_means_mean:    0.2118	test_action_norms_mean:    2.2825	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        2423.2357	test_return_std:         187.1892	test_reward_ctrl_mean:    -0.5114	test_reward_run_mean:      2.9405
+
+[INFO 17:38:06] my_main t_env: 101000 / 2000000
+[INFO 17:38:06] my_main Estimated time left: 3 days, 22 hours, 38 minutes, 48 seconds. Time passed: 5 hours, 55 minutes, 54 seconds
+[INFO 17:42:59] my_main Recent Stats | t_env:     102000 | Episode:      102
+action_means_mean:         0.2196	action_norms_mean:         2.2277	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             2563.7380	return_std:               53.0968	reward_ctrl_mean:         -0.5064	reward_run_mean:           3.3484
+test_action_means_mean:    0.2256	test_action_norms_mean:    2.2786	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        2557.9715	test_return_std:         175.9268	test_reward_ctrl_mean:    -0.5018	test_reward_run_mean:      3.5332
+
+[INFO 17:47:47] my_main Recent Stats | t_env:     104000 | Episode:      104
+action_means_mean:         0.2525	action_norms_mean:         2.2281	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             2421.4713	return_std:              198.1201	reward_ctrl_mean:         -0.4988	reward_run_mean:           3.0483
+test_action_means_mean:    0.2256	test_action_norms_mean:    2.2786	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        2557.9715	test_return_std:         175.9268	test_reward_ctrl_mean:    -0.5018	test_reward_run_mean:      3.5332
+
+[INFO 17:50:26] my_main t_env: 105000 / 2000000
+[INFO 17:50:26] my_main Estimated time left: 4 days, 1 hours, 28 minutes, 5 seconds. Time passed: 6 hours, 8 minutes, 14 seconds
+[INFO 17:55:03] my_main Recent Stats | t_env:     106000 | Episode:      106
+action_means_mean:         0.2526	action_norms_mean:         2.2297	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             2469.2834	return_std:              183.3792	reward_ctrl_mean:         -0.4824	reward_run_mean:           3.0557
+test_action_means_mean:    0.2454	test_action_norms_mean:    2.2769	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        2265.9541	test_return_std:         363.6933	test_reward_ctrl_mean:    -0.5104	test_reward_run_mean:      3.0396
+
+[INFO 17:59:53] my_main Recent Stats | t_env:     108000 | Episode:      108
+action_means_mean:         0.2457	action_norms_mean:         2.2207	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             2451.5984	return_std:              198.1848	reward_ctrl_mean:         -0.4777	reward_run_mean:           2.7270
+test_action_means_mean:    0.2454	test_action_norms_mean:    2.2769	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        2265.9541	test_return_std:         363.6933	test_reward_ctrl_mean:    -0.5104	test_reward_run_mean:      3.0396
+
+[INFO 18:02:21] my_main t_env: 109000 / 2000000
+[INFO 18:02:21] my_main Estimated time left: 3 days, 21 hours, 48 minutes, 10 seconds. Time passed: 6 hours, 20 minutes, 8 seconds
+[INFO 18:07:27] my_main Recent Stats | t_env:     110000 | Episode:      110
+action_means_mean:         0.2489	action_norms_mean:         2.2164	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             2449.8695	return_std:              230.8758	reward_ctrl_mean:         -0.5130	reward_run_mean:           2.7424
+test_action_means_mean:    0.2597	test_action_norms_mean:    2.2836	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        2368.0083	test_return_std:         293.3423	test_reward_ctrl_mean:    -0.5305	test_reward_run_mean:      3.3113
+
+[INFO 18:12:26] my_main Recent Stats | t_env:     112000 | Episode:      112
+action_means_mean:         0.2477	action_norms_mean:         2.2067	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             2463.7780	return_std:              261.7369	reward_ctrl_mean:         -0.5120	reward_run_mean:           2.7898
+test_action_means_mean:    0.2597	test_action_norms_mean:    2.2836	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        2368.0083	test_return_std:         293.3423	test_reward_ctrl_mean:    -0.5305	test_reward_run_mean:      3.3113
+
+[INFO 18:15:03] my_main t_env: 113000 / 2000000
+[INFO 18:15:03] my_main Estimated time left: 4 days, 3 hours, 58 minutes, 37 seconds. Time passed: 6 hours, 32 minutes, 51 seconds
+[INFO 18:20:26] my_main Recent Stats | t_env:     114000 | Episode:      114
+action_means_mean:         0.2119	action_norms_mean:         2.1981	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             2611.4424	return_std:              105.6063	reward_ctrl_mean:         -0.4991	reward_run_mean:           2.7970
+test_action_means_mean:    0.2537	test_action_norms_mean:    2.2801	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        2468.2723	test_return_std:         316.7023	test_reward_ctrl_mean:    -0.5401	test_reward_run_mean:      3.2844
+
+[INFO 18:25:19] my_main Recent Stats | t_env:     116000 | Episode:      116
+action_means_mean:         0.2077	action_norms_mean:         2.1903	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             2649.5404	return_std:              144.1606	reward_ctrl_mean:         -0.5029	reward_run_mean:           2.5283
+test_action_means_mean:    0.2537	test_action_norms_mean:    2.2801	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        2468.2723	test_return_std:         316.7023	test_reward_ctrl_mean:    -0.5401	test_reward_run_mean:      3.2844
+
+[INFO 18:28:02] my_main t_env: 117000 / 2000000
+[INFO 18:28:02] my_main Estimated time left: 4 days, 5 hours, 47 minutes, 20 seconds. Time passed: 6 hours, 45 minutes, 50 seconds
+[INFO 18:33:07] my_main Recent Stats | t_env:     118000 | Episode:      118
+action_means_mean:         0.2061	action_norms_mean:         2.1869	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             2631.3669	return_std:              148.1760	reward_ctrl_mean:         -0.4984	reward_run_mean:           2.7212
+test_action_means_mean:    0.2635	test_action_norms_mean:    2.2703	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        2479.5233	test_return_std:         310.7749	test_reward_ctrl_mean:    -0.5271	test_reward_run_mean:      3.2938
+
+[INFO 18:38:30] my_main Recent Stats | t_env:     120000 | Episode:      120
+action_means_mean:         0.2036	action_norms_mean:         2.1903	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             2674.4102	return_std:              126.0576	reward_ctrl_mean:         -0.4709	reward_run_mean:           2.9511
+test_action_means_mean:    0.2635	test_action_norms_mean:    2.2703	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        2479.5233	test_return_std:         310.7749	test_reward_ctrl_mean:    -0.5271	test_reward_run_mean:      3.2938
+
+[INFO 18:40:54] my_main t_env: 121000 / 2000000
+[INFO 18:40:54] my_main Estimated time left: 4 days, 4 hours, 43 minutes, 42 seconds. Time passed: 6 hours, 58 minutes, 42 seconds
+[INFO 18:46:29] my_main Recent Stats | t_env:     122000 | Episode:      122
+action_means_mean:         0.2022	action_norms_mean:         2.1962	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             2667.2259	return_std:              127.4891	reward_ctrl_mean:         -0.4852	reward_run_mean:           2.5328
+test_action_means_mean:    0.2558	test_action_norms_mean:    2.2792	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        2476.2812	test_return_std:         304.1829	test_reward_ctrl_mean:    -0.5382	test_reward_run_mean:      2.8684
+
+[INFO 18:51:28] my_main Recent Stats | t_env:     124000 | Episode:      124
+action_means_mean:         0.1915	action_norms_mean:         2.1970	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             2721.7066	return_std:              118.4079	reward_ctrl_mean:         -0.4943	reward_run_mean:           2.7829
+test_action_means_mean:    0.2558	test_action_norms_mean:    2.2792	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        2476.2812	test_return_std:         304.1829	test_reward_ctrl_mean:    -0.5382	test_reward_run_mean:      2.8684
+
+[INFO 18:54:23] my_main t_env: 125000 / 2000000
+[INFO 18:54:23] my_main Estimated time left: 4 days, 9 hours, 24 minutes, 49 seconds. Time passed: 7 hours, 12 minutes, 11 seconds
+[INFO 18:59:27] my_main Recent Stats | t_env:     126000 | Episode:      126
+action_means_mean:         0.1744	action_norms_mean:         2.1976	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             2692.9141	return_std:               79.1608	reward_ctrl_mean:         -0.5038	reward_run_mean:           2.9111
+test_action_means_mean:    0.2130	test_action_norms_mean:    2.2729	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        2783.9771	test_return_std:         197.3479	test_reward_ctrl_mean:    -0.5363	test_reward_run_mean:      3.5029
+
+[INFO 19:04:48] my_main Recent Stats | t_env:     128000 | Episode:      128
+action_means_mean:         0.1650	action_norms_mean:         2.1966	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             2639.9525	return_std:              128.1513	reward_ctrl_mean:         -0.4933	reward_run_mean:           3.1712
+test_action_means_mean:    0.2130	test_action_norms_mean:    2.2729	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        2783.9771	test_return_std:         197.3479	test_reward_ctrl_mean:    -0.5363	test_reward_run_mean:      3.5029
+
+[INFO 19:07:10] my_main t_env: 129000 / 2000000
+[INFO 19:07:10] my_main Estimated time left: 4 days, 3 hours, 39 minutes, 51 seconds. Time passed: 7 hours, 24 minutes, 58 seconds
+[INFO 19:12:05] my_main Recent Stats | t_env:     130000 | Episode:      130
+action_means_mean:         0.1448	action_norms_mean:         2.1878	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             2604.6875	return_std:              141.8584	reward_ctrl_mean:         -0.5180	reward_run_mean:           3.0240
+test_action_means_mean:    0.1894	test_action_norms_mean:    2.2811	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        2798.1704	test_return_std:         247.9199	test_reward_ctrl_mean:    -0.5292	test_reward_run_mean:      3.5062
+
+[INFO 19:17:19] my_main Recent Stats | t_env:     132000 | Episode:      132
+action_means_mean:         0.1325	action_norms_mean:         2.1858	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             2645.4217	return_std:              115.1990	reward_ctrl_mean:         -0.4813	reward_run_mean:           3.5341
+test_action_means_mean:    0.1894	test_action_norms_mean:    2.2811	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        2798.1704	test_return_std:         247.9199	test_reward_ctrl_mean:    -0.5292	test_reward_run_mean:      3.5062
+
+[INFO 19:19:56] my_main t_env: 133000 / 2000000
+[INFO 19:19:56] my_main Estimated time left: 4 days, 3 hours, 12 minutes, 24 seconds. Time passed: 7 hours, 37 minutes, 44 seconds
+[INFO 19:25:08] my_main Recent Stats | t_env:     134000 | Episode:      134
+action_means_mean:         0.1297	action_norms_mean:         2.1841	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             2625.7013	return_std:              140.3384	reward_ctrl_mean:         -0.4830	reward_run_mean:           3.2491
+test_action_means_mean:    0.1690	test_action_norms_mean:    2.2827	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        2838.4727	test_return_std:         245.7164	test_reward_ctrl_mean:    -0.5402	test_reward_run_mean:      3.4928
+
+[INFO 19:30:18] my_main Recent Stats | t_env:     136000 | Episode:      136
+action_means_mean:         0.1319	action_norms_mean:         2.1808	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             2629.6305	return_std:              143.2390	reward_ctrl_mean:         -0.4661	reward_run_mean:           3.5772
+test_action_means_mean:    0.1690	test_action_norms_mean:    2.2827	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        2838.4727	test_return_std:         245.7164	test_reward_ctrl_mean:    -0.5402	test_reward_run_mean:      3.4928
+
+[INFO 19:33:02] my_main t_env: 137000 / 2000000
+[INFO 19:33:02] my_main Estimated time left: 4 days, 5 hours, 40 minutes, 39 seconds. Time passed: 7 hours, 50 minutes, 50 seconds
+[INFO 19:38:05] my_main Recent Stats | t_env:     138000 | Episode:      138
+action_means_mean:         0.1284	action_norms_mean:         2.1803	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             2784.5580	return_std:               99.6942	reward_ctrl_mean:         -0.4646	reward_run_mean:           3.7035
+test_action_means_mean:    0.1429	test_action_norms_mean:    2.2676	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        2837.0789	test_return_std:         338.9192	test_reward_ctrl_mean:    -0.5416	test_reward_run_mean:      3.2156
+
+[INFO 19:43:29] my_main Recent Stats | t_env:     140000 | Episode:      140
+action_means_mean:         0.1271	action_norms_mean:         2.1801	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             2830.3374	return_std:               88.4232	reward_ctrl_mean:         -0.4583	reward_run_mean:           3.8834
+test_action_means_mean:    0.1429	test_action_norms_mean:    2.2676	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        2837.0789	test_return_std:         338.9192	test_reward_ctrl_mean:    -0.5416	test_reward_run_mean:      3.2156
+
+[INFO 19:45:54] my_main t_env: 141000 / 2000000
+[INFO 19:45:54] my_main Estimated time left: 4 days, 3 hours, 41 minutes, 40 seconds. Time passed: 8 hours, 3 minutes, 42 seconds
+[INFO 19:51:09] my_main Recent Stats | t_env:     142000 | Episode:      142
+action_means_mean:         0.1220	action_norms_mean:         2.1755	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             2814.7668	return_std:              108.3164	reward_ctrl_mean:         -0.4853	reward_run_mean:           3.9743
+test_action_means_mean:    0.1230	test_action_norms_mean:    2.2506	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        2809.9375	test_return_std:         406.0081	test_reward_ctrl_mean:    -0.5398	test_reward_run_mean:      3.3388
+
+[INFO 19:56:16] my_main Recent Stats | t_env:     144000 | Episode:      144
+action_means_mean:         0.1168	action_norms_mean:         2.1750	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             2840.1545	return_std:              109.6264	reward_ctrl_mean:         -0.4520	reward_run_mean:           4.3940
+test_action_means_mean:    0.1230	test_action_norms_mean:    2.2506	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        2809.9375	test_return_std:         406.0081	test_reward_ctrl_mean:    -0.5398	test_reward_run_mean:      3.3388
+
+[INFO 19:58:50] my_main t_env: 145000 / 2000000
+[INFO 19:58:50] my_main Estimated time left: 4 days, 3 hours, 58 minutes, 49 seconds. Time passed: 8 hours, 16 minutes, 38 seconds
+[INFO 20:03:59] my_main Recent Stats | t_env:     146000 | Episode:      146
+action_means_mean:         0.1130	action_norms_mean:         2.1763	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             2896.3544	return_std:              129.6492	reward_ctrl_mean:         -0.4531	reward_run_mean:           4.2854
+test_action_means_mean:    0.1231	test_action_norms_mean:    2.2498	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        2914.5369	test_return_std:         334.9818	test_reward_ctrl_mean:    -0.5427	test_reward_run_mean:      3.4275
+
+[INFO 20:09:04] my_main Recent Stats | t_env:     148000 | Episode:      148
+action_means_mean:         0.1065	action_norms_mean:         2.1739	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             2903.0720	return_std:              113.7230	reward_ctrl_mean:         -0.4621	reward_run_mean:           4.2454
+test_action_means_mean:    0.1231	test_action_norms_mean:    2.2498	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        2914.5369	test_return_std:         334.9818	test_reward_ctrl_mean:    -0.5427	test_reward_run_mean:      3.4275
+
+[INFO 20:11:39] my_main t_env: 149000 / 2000000
+[INFO 20:11:39] my_main Estimated time left: 4 days, 2 hours, 51 minutes, 52 seconds. Time passed: 8 hours, 29 minutes, 27 seconds
+[INFO 20:16:47] my_main Recent Stats | t_env:     150000 | Episode:      150
+action_means_mean:         0.1062	action_norms_mean:         2.1745	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             2903.4752	return_std:              118.8818	reward_ctrl_mean:         -0.4492	reward_run_mean:           4.0548
+test_action_means_mean:    0.1027	test_action_norms_mean:    2.2389	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        2943.2590	test_return_std:         338.5636	test_reward_ctrl_mean:    -0.5482	test_reward_run_mean:      3.4475
+
+[INFO 20:21:59] my_main Recent Stats | t_env:     152000 | Episode:      152
+action_means_mean:         0.1016	action_norms_mean:         2.1777	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             2967.4432	return_std:              102.3334	reward_ctrl_mean:         -0.4624	reward_run_mean:           3.7917
+test_action_means_mean:    0.1027	test_action_norms_mean:    2.2389	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        2943.2590	test_return_std:         338.5636	test_reward_ctrl_mean:    -0.5482	test_reward_run_mean:      3.4475
+
+[INFO 20:24:34] my_main t_env: 153000 / 2000000
+[INFO 20:24:34] my_main Estimated time left: 4 days, 3 hours, 24 minutes, 7 seconds. Time passed: 8 hours, 42 minutes, 22 seconds
+[INFO 20:29:30] my_main Recent Stats | t_env:     154000 | Episode:      154
+action_means_mean:         0.1016	action_norms_mean:         2.1808	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             3026.2062	return_std:               90.1431	reward_ctrl_mean:         -0.5064	reward_run_mean:           3.6864
+test_action_means_mean:    0.0983	test_action_norms_mean:    2.2477	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        2989.0218	test_return_std:         333.6568	test_reward_ctrl_mean:    -0.5451	test_reward_run_mean:      3.5060
+
+[INFO 20:34:22] my_main Recent Stats | t_env:     156000 | Episode:      156
+action_means_mean:         0.1017	action_norms_mean:         2.1818	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             3049.6650	return_std:               68.6415	reward_ctrl_mean:         -0.5081	reward_run_mean:           3.5738
+test_action_means_mean:    0.0983	test_action_norms_mean:    2.2477	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        2989.0218	test_return_std:         333.6568	test_reward_ctrl_mean:    -0.5451	test_reward_run_mean:      3.5060
+
+[INFO 20:36:34] my_main t_env: 157000 / 2000000
+[INFO 20:36:34] my_main Estimated time left: 3 days, 20 hours, 7 minutes, 58 seconds. Time passed: 8 hours, 54 minutes, 22 seconds
+[INFO 20:41:40] my_main Recent Stats | t_env:     158000 | Episode:      158
+action_means_mean:         0.1016	action_norms_mean:         2.1840	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             3118.8122	return_std:               63.7196	reward_ctrl_mean:         -0.4974	reward_run_mean:           3.3883
+test_action_means_mean:    0.0938	test_action_norms_mean:    2.2479	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        3045.4825	test_return_std:         332.1791	test_reward_ctrl_mean:    -0.5348	test_reward_run_mean:      3.8425
+
+[INFO 20:46:21] my_main Recent Stats | t_env:     160000 | Episode:      160
+action_means_mean:         0.1005	action_norms_mean:         2.1871	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             3122.6408	return_std:               73.1469	reward_ctrl_mean:         -0.5131	reward_run_mean:           3.4063
+test_action_means_mean:    0.0938	test_action_norms_mean:    2.2479	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        3045.4825	test_return_std:         332.1791	test_reward_ctrl_mean:    -0.5348	test_reward_run_mean:      3.8425
+
+[INFO 20:48:53] my_main t_env: 161000 / 2000000
+[INFO 20:48:53] my_main Estimated time left: 3 days, 22 hours, 23 minutes, 38 seconds. Time passed: 9 hours, 6 minutes, 41 seconds
+[INFO 20:53:49] my_main Recent Stats | t_env:     162000 | Episode:      162
+action_means_mean:         0.1019	action_norms_mean:         2.1875	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             3056.8328	return_std:              137.0959	reward_ctrl_mean:         -0.4977	reward_run_mean:           3.0369
+test_action_means_mean:    0.0993	test_action_norms_mean:    2.2584	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        3158.1357	test_return_std:         266.9272	test_reward_ctrl_mean:    -0.5273	test_reward_run_mean:      3.9405
+
+[INFO 20:58:23] my_main Recent Stats | t_env:     164000 | Episode:      164
+action_means_mean:         0.0988	action_norms_mean:         2.1866	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             3045.0613	return_std:              125.9785	reward_ctrl_mean:         -0.4840	reward_run_mean:           3.2324
+test_action_means_mean:    0.0993	test_action_norms_mean:    2.2584	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        3158.1357	test_return_std:         266.9272	test_reward_ctrl_mean:    -0.5273	test_reward_run_mean:      3.9405
+
+[INFO 21:00:27] my_main t_env: 165000 / 2000000
+[INFO 21:00:27] my_main Estimated time left: 3 days, 16 hours, 22 minutes, 59 seconds. Time passed: 9 hours, 18 minutes, 15 seconds
+[INFO 21:04:45] my_main Recent Stats | t_env:     166000 | Episode:      166
+action_means_mean:         0.0984	action_norms_mean:         2.1900	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             3078.4671	return_std:              150.6721	reward_ctrl_mean:         -0.4594	reward_run_mean:           2.9834
+test_action_means_mean:    0.1044	test_action_norms_mean:    2.2600	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        3210.1448	test_return_std:         269.3139	test_reward_ctrl_mean:    -0.5150	test_reward_run_mean:      3.9285
+
+[INFO 21:08:46] my_main Recent Stats | t_env:     168000 | Episode:      168
+action_means_mean:         0.1023	action_norms_mean:         2.1937	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             3058.6723	return_std:              149.7770	reward_ctrl_mean:         -0.4664	reward_run_mean:           3.0730
+test_action_means_mean:    0.1044	test_action_norms_mean:    2.2600	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        3210.1448	test_return_std:         269.3139	test_reward_ctrl_mean:    -0.5150	test_reward_run_mean:      3.9285
+
+[INFO 21:10:50] my_main t_env: 169000 / 2000000
+[INFO 21:10:50] my_main Estimated time left: 3 days, 7 hours, 17 minutes, 20 seconds. Time passed: 9 hours, 28 minutes, 38 seconds
+[INFO 21:15:18] my_main Recent Stats | t_env:     170000 | Episode:      170
+action_means_mean:         0.1028	action_norms_mean:         2.1951	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             3097.8511	return_std:              119.5374	reward_ctrl_mean:         -0.4697	reward_run_mean:           3.2331
+test_action_means_mean:    0.1128	test_action_norms_mean:    2.2694	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        3253.6223	test_return_std:         236.0169	test_reward_ctrl_mean:    -0.5241	test_reward_run_mean:      3.7812
+
+[INFO 21:19:21] my_main Recent Stats | t_env:     172000 | Episode:      172
+action_means_mean:         0.1066	action_norms_mean:         2.1995	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             3168.3694	return_std:               61.2749	reward_ctrl_mean:         -0.4769	reward_run_mean:           3.2859
+test_action_means_mean:    0.1128	test_action_norms_mean:    2.2694	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        3253.6223	test_return_std:         236.0169	test_reward_ctrl_mean:    -0.5241	test_reward_run_mean:      3.7812
+
+[INFO 21:21:27] my_main t_env: 173000 / 2000000
+[INFO 21:21:27] my_main Estimated time left: 3 days, 8 hours, 48 minutes, 33 seconds. Time passed: 9 hours, 39 minutes, 15 seconds
+[INFO 21:25:50] my_main Recent Stats | t_env:     174000 | Episode:      174
+action_means_mean:         0.1102	action_norms_mean:         2.2023	ep_length_mean:          1000.0000	episode_limit_mean:        1.0000
+return_mean:             3149.6351	return_std:              112.4923	reward_ctrl_mean:         -0.4892	reward_run_mean:           2.5323
+test_action_means_mean:    0.1166	test_action_norms_mean:    2.2701	test_ep_length_mean:     1000.0000	test_episode_limit_mean:   1.0000
+test_return_mean:        3296.0083	test_return_std:         242.6571	test_reward_ctrl_mean:    -0.5090	test_reward_run_mean:      3.8192
+

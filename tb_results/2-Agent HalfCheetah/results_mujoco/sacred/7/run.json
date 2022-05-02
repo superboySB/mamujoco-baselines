@@ -1,0 +1,158 @@
+{
+  "artifacts": [],
+  "command": "my_main",
+  "experiment": {
+    "base_dir": "/home/liuchi/dzp_is_sb/mamujoco-baselines",
+    "dependencies": [
+      "munch==2.5.0",
+      "numpy==1.21.5",
+      "pymongo==4.1.1",
+      "PyYAML==6.0",
+      "sacred==0.8.2",
+      "torch==1.11.0"
+    ],
+    "mainfile": "main.py",
+    "name": "pymarl",
+    "repositories": [
+      {
+        "commit": "f31e2e80409076d80ed0ea66636babf3d5a3ffe6",
+        "dirty": true,
+        "url": "https://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@github.com/superboySB/mamujoco-baselines.git"
+      },
+      {
+        "commit": "f31e2e80409076d80ed0ea66636babf3d5a3ffe6",
+        "dirty": true,
+        "url": "https://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@github.com/superboySB/mamujoco-baselines.git"
+      },
+      {
+        "commit": "f31e2e80409076d80ed0ea66636babf3d5a3ffe6",
+        "dirty": true,
+        "url": "https://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@github.com/superboySB/mamujoco-baselines.git"
+      },
+      {
+        "commit": "f31e2e80409076d80ed0ea66636babf3d5a3ffe6",
+        "dirty": true,
+        "url": "https://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@github.com/superboySB/mamujoco-baselines.git"
+      }
+    ],
+    "sources": [
+      [
+        "main.py",
+        "_sources/main_a1f5919a057ce42105ffe6aba30e13bc.py"
+      ],
+      [
+        "run.py",
+        "_sources/run_49b36c719c5b1d9f69a545205b0ec4c6.py"
+      ],
+      [
+        "utils/__init__.py",
+        "_sources/__init___d41d8cd98f00b204e9800998ecf8427e.py"
+      ],
+      [
+        "utils/logging.py",
+        "_sources/logging_d0a2c9ff2cef1001f1d37c1d441b2459.py"
+      ]
+    ]
+  },
+  "fail_trace": [
+    "Traceback (most recent call last):\n",
+    "  File \"/home/liuchi/anaconda3/envs/mujoco/lib/python3.8/site-packages/sacred/config/captured_function.py\", line 42, in captured_function\n    result = wrapped(*args, **kwargs)\n",
+    "  File \"main.py\", line 68, in my_main\n    run(_run, _config, _log, mongo_client)\n",
+    "  File \"/home/liuchi/dzp_is_sb/mamujoco-baselines/run.py\", line 52, in run\n    run_sequential(args=args, logger=logger)\n",
+    "  File \"/home/liuchi/dzp_is_sb/mamujoco-baselines/run.py\", line 257, in run_sequential\n    learner.train(episode_sample, runner.t_env, episode)\n",
+    "  File \"/home/liuchi/dzp_is_sb/mamujoco-baselines/learners/ppo_learner.py\", line 84, in train\n    advantages, critic_train_stats = self.train_critic_sequential(self.critic, self.target_critic, batch,\n",
+    "  File \"/home/liuchi/dzp_is_sb/mamujoco-baselines/learners/ppo_learner.py\", line 140, in train_critic_sequential\n    raw_sampled_actions = [[] for _ in range(self.args.n_samples)]\n",
+    "AttributeError: 'types.SimpleNamespace' object has no attribute 'n_samples'\n"
+  ],
+  "heartbeat": "2022-05-02T07:35:13.853227",
+  "host": {
+    "ENV": {},
+    "cpu": "Intel(R) Xeon(R) Gold 6252 CPU @ 2.10GHz",
+    "gpus": {
+      "driver_version": "470.103.01",
+      "gpus": [
+        {
+          "model": "NVIDIA TITAN RTX",
+          "persistence_mode": false,
+          "total_memory": 24220
+        },
+        {
+          "model": "NVIDIA TITAN RTX",
+          "persistence_mode": false,
+          "total_memory": 24220
+        },
+        {
+          "model": "NVIDIA TITAN RTX",
+          "persistence_mode": false,
+          "total_memory": 24220
+        },
+        {
+          "model": "NVIDIA GeForce RTX 3090",
+          "persistence_mode": false,
+          "total_memory": 24268
+        },
+        {
+          "model": "NVIDIA TITAN RTX",
+          "persistence_mode": false,
+          "total_memory": 24220
+        },
+        {
+          "model": "NVIDIA TITAN RTX",
+          "persistence_mode": false,
+          "total_memory": 24220
+        },
+        {
+          "model": "NVIDIA TITAN RTX",
+          "persistence_mode": false,
+          "total_memory": 24220
+        },
+        {
+          "model": "NVIDIA TITAN RTX",
+          "persistence_mode": false,
+          "total_memory": 24220
+        }
+      ]
+    },
+    "hostname": "omnisky",
+    "os": [
+      "Linux",
+      "Linux-4.15.0-176-generic-x86_64-with-glibc2.10"
+    ],
+    "python_version": "3.8.0"
+  },
+  "meta": {
+    "command": "my_main",
+    "options": {
+      "--beat-interval": null,
+      "--capture": null,
+      "--comment": null,
+      "--debug": false,
+      "--enforce_clean": false,
+      "--file_storage": null,
+      "--force": false,
+      "--help": false,
+      "--loglevel": null,
+      "--mongo_db": null,
+      "--name": null,
+      "--pdb": false,
+      "--print-config": false,
+      "--priority": null,
+      "--queue": false,
+      "--s3": null,
+      "--sql": null,
+      "--tiny_db": null,
+      "--unobserved": false,
+      "COMMAND": null,
+      "UPDATE": [
+        "env_args.scenario=HalfCheetah-v2"
+      ],
+      "help": false,
+      "with": true
+    }
+  },
+  "resources": [],
+  "result": null,
+  "start_time": "2022-05-02T03:44:56.374836",
+  "status": "FAILED",
+  "stop_time": "2022-05-02T07:35:14.059877"
+}
