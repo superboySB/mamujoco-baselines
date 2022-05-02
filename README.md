@@ -45,7 +45,7 @@ python render_mamujoco.py  # test mujoco_multi
 ```
 
 ### 2. MAPSA  for MA-mujoco 
-Results (put tf_events in ./tb_results)
+#### Results (put tf_events in ./tb_results)
 
 
 
@@ -63,6 +63,123 @@ Train Algorithms (config names):
 ``` sh
 python main.py --config=mappo --env-config=mujoco_multi with env_args.scenario="HalfCheetah-v2"
 ```
-Results (put tf_events in ./tb_results)
+#### Results (put tf_events in ./tb_results)
 
+
+##### 2-Agent Ant
+
+```
+env_args.scenario="Ant-v2"
+env_args.agent_conf="2x4"
+env_args.agent_obsk=1
+```
+
+
+
+##### 2-Agent Ant Diag
+
+```
+env_args.scenario="Ant-v2"
+env_args.agent_conf="2x4d"
+env_args.agent_obsk=1
+```
+
+##### 4-Agent Ant
+
+```
+env_args.scenario="Ant-v2"
+env_args.agent_conf="4x2"
+env_args.agent_obsk=1
+```
+
+##### 2-Agent HalfCheetah
+
+```
+env_args.scenario="HalfCheetah-v2"
+env_args.agent_conf="2x3"
+env_args.agent_obsk=1
+```
+result:
 ![initial results](https://img-blog.csdnimg.cn/de2e13b6b39c47f1acfce1f378be397c.png)
+
+##### 6-Agent HalfCheetah
+
+```
+env_args.scenario="HalfCheetah-v2"
+env_args.agent_conf="6x1"
+env_args.agent_obsk=1
+```
+
+##### 3-Agent Hopper
+
+```
+env_args.scenario="Hopper-v2"
+env_args.agent_conf="3x1"
+env_args.agent_obsk=1
+```
+
+##### 2-Agent Humanoid
+
+```
+env_args.scenario="Humanoid-v2"
+env_args.agent_conf="9|8"
+env_args.agent_obsk=1
+```
+
+##### 2-Agent HumanoidStandup
+
+```
+env_args.scenario="HumanoidStandup-v2"
+env_args.agent_conf="9|8"
+env_args.agent_obsk=1
+```
+
+### 2-Agent Reacher
+
+```
+env_args.scenario="Reacher-v2"
+env_args.agent_conf="2x1"
+env_args.agent_obsk=1
+```
+
+### 2-Agent Swimmer
+
+```
+env_args.scenario="Swimmer-v2"
+env_args.agent_conf="2x1"
+env_args.agent_obsk=1
+```
+
+### 2-Agent Walker
+
+```
+env_args.scenario="Walker2d-v2"
+env_args.agent_conf="2x3"
+env_args.agent_obsk=1
+```
+
+### Manyagent Swimmer
+
+```
+env_args.scenario="manyagent_swimmer"
+env_args.agent_conf="10x2"
+env_args.agent_obsk=1
+```
+
+### Manyagent Ant
+
+```
+env_args.scenario="manyagent_ant"
+env_args.agent_conf="2x3"
+env_args.agent_obsk=1
+```
+
+### Coupled HalfCheetah (NEW!)
+
+```
+env_args.scenario="coupled_half_cheetah"
+env_args.agent_conf="1p1"
+env_args.agent_obsk=1
+```
+
+`CoupledHalfCheetah` features two separate HalfCheetah agents coupled by an elastic tendon. You can add more tendons or novel coupled scenarios by
