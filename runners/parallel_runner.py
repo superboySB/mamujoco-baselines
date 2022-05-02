@@ -17,8 +17,9 @@ class ParallelRunner:
         # Make subprocesses for the envs
         self.parent_conns, self.worker_conns = zip(*[Pipe() for _ in range(self.batch_size)])
         env_fn = env_REGISTRY[self.args.env]
-        self.ps = [Process(target=env_worker, args=(worker_conn, CloudpickleWrapper(partial(env_fn, env_args=self.args.env_args, args=self.args))))
-                                for worker_conn in self.worker_conns]
+        self.ps = [Process(target=env_worker, args=(
+        worker_conn, CloudpickleWrapper(partial(env_fn, env_args=self.args.env_args, args=self.args))))
+                   for worker_conn in self.worker_conns]
         for p in self.ps:
             p.daemon = True
             p.start()
@@ -99,23 +100,25 @@ class ParallelRunner:
             actions = self.mac.select_actions(self.batch, t_ep=self.t, t_env=self.t_env, bs=envs_not_terminated,
                                               test_mode=test_mode)
             cpu_actions = actions.to("cpu").numpy()
-            action_norms.append(np.sqrt(np.sum(cpu_actions**2)))
+            action_norms.append(np.sqrt(np.sum(cpu_actions ** 2)))
             action_means.append(np.mean(cpu_actions))
 
             # Update the actions taken
             actions_chosen = {
                 "actions": actions.unsqueeze(1)
             }
-
+            # TODO: 离散->连续
+            # print(actions_chosen["actions"].shape)
+            # exit(0)
             self.batch.update(actions_chosen, bs=envs_not_terminated, ts=self.t, mark_filled=False)
 
             # Send actions to each env
             action_idx = 0
             for idx, parent_conn in enumerate(self.parent_conns):
-                if idx in envs_not_terminated: # We produced actions for this env
-                    if not terminated[idx]: # Only send the actions to the env if it hasn't terminated
+                if idx in envs_not_terminated:  # We produced actions for this env
+                    if not terminated[idx]:  # Only send the actions to the env if it hasn't terminated
                         parent_conn.send(("step", cpu_actions[action_idx]))
-                    action_idx += 1 # actions is not a list over every env
+                    action_idx += 1  # actions is not a list over every env
 
             # Post step data we will insert for the current timestep
             post_transition_data = {
@@ -180,11 +183,12 @@ class ParallelRunner:
 
                 # insert single transitions into buffer
                 # note zeros inserted for batch elements already terminated
-                buffer.insert_episode_batch(self.batch[:, self.t-1:self.t+1])
+                buffer.insert_episode_batch(self.batch[:, self.t - 1:self.t + 1])
 
                 if (self.t_env + self.t - self.last_learn_T) / self.args.learn_interval >= 1.0:
                     # execute learning steps (if enabled)
-                    if buffer.can_sample(self.args.batch_size) and (buffer.episodes_in_buffer > getattr(self.args, "buffer_warmup", 0)):
+                    if buffer.can_sample(self.args.batch_size) and (
+                            buffer.episodes_in_buffer > getattr(self.args, "buffer_warmup", 0)):
                         episode_sample = buffer.sample(self.args.batch_size)
 
                         # Truncate batch to only filled timesteps
@@ -205,7 +209,7 @@ class ParallelRunner:
 
         # Get stats back for each env
         for parent_conn in self.parent_conns:
-            parent_conn.send(("get_stats",None))
+            parent_conn.send(("get_stats", None))
 
         env_stats = []
         for parent_conn in self.parent_conns:
@@ -247,7 +251,7 @@ class ParallelRunner:
 
         for k, v in stats.items():
             if k != "n_episodes":
-                self.logger.log_stat(prefix + k + "_mean" , v/stats["n_episodes"], self.t_env)
+                self.logger.log_stat(prefix + k + "_mean", v / stats["n_episodes"], self.t_env)
         stats.clear()
 
 
@@ -300,11 +304,14 @@ class CloudpickleWrapper():
     """
     Uses cloudpickle to serialize contents (otherwise multiprocessing tries to use pickle)
     """
+
     def __init__(self, x):
         self.x = x
+
     def __getstate__(self):
         import cloudpickle
         return cloudpickle.dumps(self.x)
+
     def __setstate__(self, ob):
         import pickle
         self.x = pickle.loads(ob)

@@ -5,7 +5,6 @@ import numpy as np
 def convert(dictionary):
     return namedtuple('GenericDict', dictionary.keys())(**dictionary)
 
-
 class MultiAgentEnv(object):
 
     def __init__(self, batch_size=None, **kwargs):
@@ -57,6 +56,7 @@ class MultiAgentEnv(object):
     def get_stats(self):
         raise NotImplementedError
 
+    # TODO: Temp hack
     def get_agg_stats(self, stats):
         return {}
 

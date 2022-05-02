@@ -106,26 +106,19 @@ class EpisodeBatch:
 
             dtype = self.scheme[k].get("dtype", th.float32)
             v = th.tensor(v, dtype=dtype, device=self.device)
-            try:
-                self._check_safe_view(v, target[k][_slices])
-            except Exception as e:
-                a = 5
-                pass
+            self._check_safe_view(v, target[k][_slices])
             target[k][_slices] = v.view_as(target[k][_slices])
 
             if k in self.preprocess:
-                try:
-                    new_k = self.preprocess[k][0]
-                except Exception as e:
-                    a = 5
-                    pass
+                new_k = self.preprocess[k][0]
                 v = target[k][_slices]
                 for transform in self.preprocess[k][1]:
                     v = transform.transform(v)
                     target[new_k][_slices] = v.view_as(target[new_k][_slices])
-            pass
 
     def _check_safe_view(self, v, dest):
+        # print(v, v.shape)
+        # print(dest, dest.shape)
         idx = len(v.shape) - 1
         for s in dest.shape[::-1]:
             if v.shape[idx] != s:

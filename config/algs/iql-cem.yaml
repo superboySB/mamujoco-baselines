@@ -2,7 +2,6 @@ action_range: ~
 action_selector: ~
 agent: cem
 agent_output_type: "q"
-batch_size_run: 1
 batch_size: 100
 buffer_size: 1000000
 buffer_warmup: 1000
@@ -33,7 +32,6 @@ n_train: 1
 optimizer: adam
 optimizer_epsilon: 0.01
 ou_stop_episode: 100 # training noise goes to zero after this episode
-rnn_hidden_dim: 400
 run_mode: ~
 runner: "parallel"
 runner_scope: 'transition'
@@ -41,12 +39,6 @@ target_update_interval: ~
 target_update_mode: "soft"
 target_update_tau: 0.001
 test_greedy: ~
-test_interval: 4000
-test_nepisode: 10
-testing_on: True
-t_max: 500000
-save_model: False
-save_model_interval: 10000
 verbose: False
 weight_decay: True
 weight_decay_factor: 0.0001

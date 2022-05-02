@@ -2,7 +2,8 @@
 
 ###  1. Install
 
-1. Install requirements
+Install requirements
+
 ```shell
 apt-get update -q \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y \
@@ -26,8 +27,9 @@ conda activate mujoco
 conda install pytorch torchvision torchaudio cudatoolkit=11.3 tensorboard future
 ```
 
-2. Download the MuJoCo version 2.1 binaries for [Linux](https://mujoco.org/download/mujoco210-linux-x86_64.tar.gz) or [OSX](https://mujoco.org/download/mujoco210-macos-x86_64.tar.gz).
-3. Extract the downloaded `mujoco210` directory into `~/.mujoco/mujoco210`.
+Download the MuJoCo version 2.1 binaries for [Linux](https://mujoco.org/download/mujoco210-linux-x86_64.tar.gz) or [OSX](https://mujoco.org/download/mujoco210-macos-x86_64.tar.gz).
+
+Extract the downloaded `mujoco210` directory into `~/.mujoco/mujoco210`.
 
 ```sh
 # add to ~/.bashrc
@@ -42,21 +44,25 @@ python render_mujoco.py  # test mujoco
 python render_mamujoco.py  # test mujoco_multi
 ```
 
-### 2.1 MAPSA  for MA-mujoco 
-Results
+### 2. MAPSA  for MA-mujoco 
+Results (put tf_events in ./tb_results)
 
 
 
-### 2.2 Some baseline for MA-mujoco 
+### 3. Some baseline for MA-mujoco 
 
-Train: 
+Train Algorithms (config names): 
 - COMIX（comix，comix-naf）
 - COVDN（covdn，covdn-naf）
-- IQL（iqn-cem，iql-naf）*cannot run*
+- ~~IQL（iqn-cem，iql-naf）~~
 - MADDPG（maddpg）
 - FacMADDPG（facmaddpg）
+- IPPO（ippo，ippo_ns）
+- mappo（mappo，mappo_ns）
 
 ``` sh
-python main.py --config=comix --env-config=mujoco_multi with env_args.scenario="HalfCheetah-v2"
+python main.py --config=mappo --env-config=mujoco_multi with env_args.scenario="HalfCheetah-v2"
 ```
-Results
+Results (put tf_events in ./tb_results)
+
+![initial results](https://img-blog.csdnimg.cn/de2e13b6b39c47f1acfce1f378be397c.png)

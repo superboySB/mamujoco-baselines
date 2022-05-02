@@ -14,7 +14,6 @@ import yaml
 
 from run import run
 
-os.environ["CUDA_VISIBLE_DEVIDES"] = "3"
 SETTINGS['CAPTURE_MODE'] = "fd"  # set to "no" if you want to see stdout/stderr in console
 SETTINGS['CONFIG']['READ_ONLY_CONFIG'] = False
 logger = get_logger()
@@ -23,7 +22,7 @@ ex = Experiment("pymarl")
 ex.logger = logger
 ex.captured_out_filter = apply_backspaces_and_linefeeds
 
-results_path = os.path.join(dirname(dirname(abspath(__file__))), "results")
+results_path = os.path.join(dirname(dirname(abspath(__file__))), "results_mujoco")
 
 mongo_client = None
 
@@ -144,7 +143,7 @@ if __name__ == '__main__':
         mongo_client = setup_mongodb(db_url, db_name)
 
     # Save to disk by default for sacred, even if we are using the mongodb
-    logger.info("Saving to FileStorageObserver in results/sacred.")
+    logger.info("Saving to FileStorageObserver in results_mujoco/sacred.")
     file_obs_path = os.path.join(results_path, "sacred")
     ex.observers.append(FileStorageObserver.create(file_obs_path))
 

@@ -70,11 +70,11 @@ class CQMixMAC(BasicMAC):
             return ret
         agent_outs = ret["Q"]
 
-        if self.agent_output_type == "pi_logits":
-            agent_outs = th.nn.functional.softmax(agent_outs, dim=-1)
-            if not test_mode:
-                agent_outs = ((1 - self.action_selector.epsilon) * agent_outs
-                              + th.ones_like(agent_outs) * self.action_selector.epsilon/agent_outs.size(-1))
+        # if self.agent_output_type == "pi_logits":
+        #     agent_outs = th.nn.functional.softmax(agent_outs, dim=-1)
+        #     if not test_mode:
+        #         agent_outs = ((1 - self.action_selector.epsilon) * agent_outs
+        #                       + th.ones_like(agent_outs) * self.action_selector.epsilon/agent_outs.size(-1))
         return agent_outs.view(ep_batch.batch_size, self.n_agents, -1), actions
 
     def _build_inputs(self, batch, t):
@@ -105,7 +105,7 @@ class CQMixMAC(BasicMAC):
 
         return input_shape
 
-    def cem_sampling(self, ep_batch, t, bs):
+    def cem_sampling(self, ep_batch, t, bs):  # CEM采样，离散变连续
         # Number of samples from the param distribution
         N = 64
         # Number of best samples we will consider

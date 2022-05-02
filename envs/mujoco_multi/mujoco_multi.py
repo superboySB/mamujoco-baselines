@@ -1,10 +1,9 @@
-from functools import partial
 import gym
 from gym.spaces import Box
 from gym.wrappers import TimeLimit
 import numpy as np
 
-from .multiagentenv import MultiAgentEnv
+from envs.multiagentenv import MultiAgentEnv
 from .obsk import get_joints_at_kdist, get_parts_and_edges, build_obs
 
 # using code from https://github.com/ikostrikov/pytorch-ddpg-naf
@@ -195,7 +194,7 @@ class MujocoMulti(MultiAgentEnv):
         self.env.render(**kwargs)
 
     def close(self):
-        raise NotImplementedError
+        pass
 
     def seed(self, args):
         pass
