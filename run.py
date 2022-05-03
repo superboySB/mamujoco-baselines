@@ -21,7 +21,6 @@ from components.transforms import OneHot
 
 
 def run(_run, _config, _log, pymongo_client):
-
     # check args sanity
     _config = args_sanity_check(_config, _log)
 
@@ -38,7 +37,8 @@ def run(_run, _config, _log, pymongo_client):
     _log.info("\n\n" + experiment_params + "\n")
 
     # configure tensorboard logger
-    unique_token = "{}__{}".format(args.name, datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S"))
+    unique_token = f"{_config['name']}_{_config['env_args']['scenario']}_{_config['env_args']['agent_conf']}_{datetime.datetime.now()}"
+
     args.unique_token = unique_token
     if args.use_tensorboard:
         tb_logs_direc = os.path.join(dirname(dirname(abspath(__file__))), "results_mujoco", "tb_logs")
@@ -73,7 +73,6 @@ def run(_run, _config, _log, pymongo_client):
 
 
 def evaluate_sequential(args, runner):
-
     for _ in range(args.test_nepisode):
         runner.run(test_mode=True)
 
@@ -82,8 +81,8 @@ def evaluate_sequential(args, runner):
 
     runner.close_env()
 
-def run_sequential(args, logger):
 
+def run_sequential(args, logger):
     # Init runner so we can get env info
     runner = r_REGISTRY[args.runner](args=args, logger=logger)
 
@@ -92,12 +91,11 @@ def run_sequential(args, logger):
     args.n_agents = env_info["n_agents"]
     args.n_actions = env_info["n_actions"]
     args.state_shape = env_info["state_shape"]
-    #args.action_space = env_info["action_space"]
+    # args.action_space = env_info["action_space"]
     args.action_spaces = env_info["action_spaces"]
     args.actions_dtype = env_info["actions_dtype"]
     args.normalise_actions = env_info.get("normalise_actions",
-                                                False) # if true, action vectors need to sum to one
-
+                                          False)  # if true, action vectors need to sum to one
 
     # create function scaling agent action tensors to and from range [0,1]
     ttype = th.FloatTensor if not args.use_cuda else th.cuda.FloatTensor
@@ -110,7 +108,8 @@ def run_sequential(args, logger):
                 _action_max = args.action_spaces[_aid].high[_actid]
                 mult_coef_tensor[_aid, _actid] = np.asscalar(_action_max - _action_min)
                 action_min_tensor[_aid, _actid] = np.asscalar(_action_min)
-    elif all([isinstance(act_space, spaces.Tuple) for act_space in args.action_spaces]):    # NOTE: This was added to handle scenarios like simple_reference since the action space is Tuple
+    elif all([isinstance(act_space, spaces.Tuple) for act_space in
+              args.action_spaces]):  # NOTE: This was added to handle scenarios like simple_reference since the action space is Tuple
         for _aid in range(args.n_agents):
             for _actid in range(args.action_spaces[_aid].spaces[0].shape[0]):
                 _action_min = args.action_spaces[_aid].spaces[0].low[_actid]
@@ -137,7 +136,7 @@ def run_sequential(args, logger):
         elif actions.is_cuda:
             return args.actions2unit_coef * actions + args.actions_min
         else:
-            return args.args.actions2unit_coef_cpu  * actions + args.actions_min_cpu
+            return args.args.actions2unit_coef_cpu * actions + args.actions_min_cpu
 
     def actions_from_unit_box(actions):
         if isinstance(actions, np.ndarray):
@@ -156,7 +155,7 @@ def run_sequential(args, logger):
         actions_vshape = 1 if not args.actions_dtype == np.float32 else max([i.shape[0] for i in args.action_spaces])
     elif all([isinstance(act_space, spaces.Tuple) for act_space in args.action_spaces]):
         actions_vshape = 1 if not args.actions_dtype == np.float32 else \
-                                       max([i.spaces[0].shape[0] + i.spaces[1].shape[0] for i in args.action_spaces])
+            max([i.spaces[0].shape[0] + i.spaces[1].shape[0] for i in args.action_spaces])
     # Default/Base scheme
     scheme = {
         "state": {"vshape": env_info["state_shape"]},
@@ -177,7 +176,8 @@ def run_sequential(args, logger):
     else:
         preprocess = {}
 
-    buffer = ReplayBuffer(scheme, groups, args.buffer_size, env_info["episode_limit"] + 1 if args.runner_scope == "episodic" else 2,
+    buffer = ReplayBuffer(scheme, groups, args.buffer_size,
+                          env_info["episode_limit"] + 1 if args.runner_scope == "episodic" else 2,
                           preprocess=preprocess,
                           device="cpu" if args.buffer_cpu_only else args.device)
 
@@ -279,16 +279,16 @@ def run_sequential(args, logger):
                         runner.run(test_mode=True, learner=learner)
                     elif getattr(args, "runner_scope", "episode") == "transition":
                         runner.run(test_mode=True,
-                                   buffer = buffer,
-                                   learner = learner,
-                                   episode = episode)
+                                   buffer=buffer,
+                                   learner=learner,
+                                   episode=episode)
                     else:
                         raise Exception("Undefined runner scope!")
 
         if args.save_model and (runner.t_env - model_save_time >= args.save_model_interval or model_save_time == 0):
             model_save_time = runner.t_env
             save_path = os.path.join(args.local_results_path, "models", args.unique_token, str(runner.t_env))
-            #"results/models/{}".format(unique_token)
+            # "results/models/{}".format(unique_token)
             os.makedirs(save_path, exist_ok=True)
             logger.console_logger.info("Saving models to {}".format(save_path))
 
@@ -310,7 +310,6 @@ def run_sequential(args, logger):
 
 
 def args_sanity_check(config, _log):
-
     # set CUDA flags
     # config["use_cuda"] = True # Use cuda whenever possible!
     if config["use_cuda"] and not th.cuda.is_available():
@@ -320,7 +319,7 @@ def args_sanity_check(config, _log):
     if config["test_nepisode"] < config["batch_size_run"]:
         config["test_nepisode"] = config["batch_size_run"]
     else:
-        config["test_nepisode"] = (config["test_nepisode"]//config["batch_size_run"]) * config["batch_size_run"]
+        config["test_nepisode"] = (config["test_nepisode"] // config["batch_size_run"]) * config["batch_size_run"]
 
     # assert (config["run_mode"] in ["parallel_subproc"] and config["use_replay_buffer"]) or (not config["run_mode"] in ["parallel_subproc"]),  \
     #     "need to use replay buffer if running in parallel mode!"
