@@ -83,6 +83,8 @@ python main.py --config=comix --env-config=mujoco_multi with env_args.scenario="
 python3.7 main.py --config=alg_name --env-config=mujoco_multi with env_args.scenario="Ant-v2" env_args.agent_conf="2x4" env_args.agent_obsk=1
 ```
 result:
+![trial results](https://img-blog.csdnimg.cn/cee7b0b646fe422696e3bc1e1d9f1f94.jpeg)
+
 
 ##### 2-Agent Ant Diag
 
